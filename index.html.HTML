@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte: Germinación del Frijol - Iker Adrian Marquez Ramos</title>
+    <style>
+        :root {
+            --primary: #2e7d32;
+            --primary-light: #43a047;
+            --accent-sun: #f9a825;
+            --accent-shade: #757575;
+            --accent-indoor: #1e88e5;
+            --bg: #f8fafc;
+            --text: #334155;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            letter-spacing: -1px;
+        }
+
+        header p {
+            margin-top: 15px;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: -40px auto 40px;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            margin-top: 0;
+            color: var(--primary);
+            border-bottom: 2px solid #ecf3ec;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        ul,
+        ol {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        /* Estilos de la Galería de Preparación */
+        .prep-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 250px;
+            background: #e2e8f0;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+            text-align: center;
+            border: 2px dashed #cbd5e1;
+        }
+
+        /* Rejilla de Casos */
+        .grid-cases {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .case {
+            border-radius: 20px;
+            padding: 25px;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            border-top: 8px solid;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .case h3 {
+            margin: 0 0 15px 0;
+            font-size: 1.3rem;
+            text-align: center;
+        }
+
+        .sol {
+            border-color: var(--accent-sun);
+            background: #fffdf7;
+        }
+
+        .sombra {
+            border-color: var(--accent-shade);
+            background: #f9f9f9;
+        }
+
+        .interior {
+            border-color: var(--accent-indoor);
+            background: #f5faff;
+        }
+
+        .case p {
+            font-size: 0.95rem;
+            color: #475569;
+            flex-grow: 1;
+        }
+
+        .case-images {
+            display: grid;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .image-box {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .image-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 12px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .tag-start {
+            background: #e0f2fe;
+            color: #0369a1;
+        }
+
+        .tag-end {
+            background: #dcfce7;
+            color: #15803d;
+        }
+
+        .mini-photo {
+            width: 100%;
+            height: 150px;
+            background: #f1f5f9;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: #94a3b8;
+        }
+
+        footer {
+            background: #1e293b;
+            color: #94a3b8;
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 900px) {
+            .grid-cases {
+                grid-template-columns: 1fr;
+            }
+
+            header h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Botón de Imprimir/PDF */
+        .btn-print {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(46, 125, 50, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .btn-print:hover {
+            background: var(--primary-light);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(46, 125, 50, 0.6);
+        }
+
+        /* Estilos al imprimir o guardar en PDF */
+        @media print {
+            .btn-print {
+                display: none !important;
+                /* Esconder el botón en el PDF */
+            }
+
+            body {
+                background: white;
+                /* Quitar fondo gris para el PDF */
+            }
+
+            .card {
+                box-shadow: none;
+                border: 1px solid #ddd;
+                break-inside: avoid;
+                /* Evitar que las tarjetas se corten a la mitad en páginas distintas */
+            }
+
+            .container {
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Experimento de Germinación</h1>
+        <p>Análisis Comparativo: Influencia de la Luz Solar en el Frijol</p>
+        <p style="margin-top: 5px; font-weight: bold;">Por: Iker Adrian Marquez Ramos</p>
+    </header>
+
+    <div class="container">
+
+        <div class="card">
+            <h2>🌱 Introducción</h2>
+            <p>
+                La germinación es el proceso mágico donde una semilla despierta y se convierte en una nueva planta.
+                Para que esto pase, necesita agua, aire y buena temperatura. En este experimento, vamos a observar cómo
+                la cantidad de luz del sol afecta la rapidez con la que crece nuestro frijolito y cómo se desarrollan
+                sus primeras raíces y hojitas.
+            </p>
+        </div>
+
+        <div class="card">
+            <h2>🎯 Objetivo</h2>
+            <p>
+                El propósito es ver, anotar y tomar fotos de cómo cambian y crecen las plantitas de frijol cuando
+                las ponemos en tres lugares diferentes: <strong>directo en el sol, en un lugar con sombra y escondidas
+                    adentro de la casa sin luz del sol</strong>.
+            </p>
+        </div>
+
+        <div class="card">
+            <h2>🛠 Materiales y Pasos a Seguir</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                <div>
+                    <strong>Lo que necesitamos:</strong>
+                    <ul>
+                        <li>Semillas de frijol (las mejores que encuentres)</li>
+                        <li>Algodón (para que sirva como "tierrita")</li>
+                        <li>Frascos transparentes de vidrio o plástico</li>
+                        <li>Agua (de la llave o de garrafón)</li>
+                    </ul>
+                </div>
+                <div>
+                    <strong>Lo que vamos a hacer:</strong>
+                    <ol>
+                        <li>Acomodar el algodón como camita en los frascos.</li>
+                        <li>Poner los frijoles sobre el algodón húmedo.</li>
+                        <li>Colocar cada frasco en su lugar (sol, sombra y adentro).</li>
+                        <li>Revisar y regarlos un poquito todos los días.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>📸 Galería de Preparación</h2>
+            <div class="prep-gallery">
+                <div class="image-placeholder" style="padding: 0; border: none; background: transparent;">
+                    <img src="montaje_frascos.jpg" alt="Montaje de Frascos"
+                        style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                </div>
+                <div class="image-placeholder" style="padding: 0; border: none; background: transparent;">
+                    <img src="hidratacion_inicial.jpg" alt="Hidratación Inicial"
+                        style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🔍 Análisis de Casos</h2>
+
+            <div class="grid-cases">
+                <!-- Caso Sol -->
+                <div class="case sol">
+                    <h3>☀️ Luz Directa</h3>
+                    <p>La planta creció súper fuerte y sana. El frijolito se abrió rápido y le salió una raíz gruesa.
+                        Sus primeras hojitas y el tallo se ven de un color verde muy bonito y brillante gracias a que
+                        recibió mucha luz del sol.</p>
+                    <div class="case-images">
+                        <div class="image-box">
+                            <span class="image-tag tag-start">Día 1</span>
+                            <div class="mini-photo" style="padding: 0; background: transparent;">
+                                <img src="sol_dia1.jpg" alt="Semilla seca"
+                                    style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                            </div>
+                        </div>
+                        <div class="image-box">
+                            <span class="image-tag tag-end">Día 7</span>
+                            <div class="mini-photo" style="padding: 0; background: transparent;">
+                                <img src="sol_dia7.jpg" alt="Plántula verde"
+                                    style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Caso Sombra -->
+                <div class="case sombra">
+                    <h3>🌥 Sombra</h3>
+                    <p>La plantita sí creció, pero un poco más lento. El tallo se estiró bastante pero está más
+                        delgadito
+                        que el del frijol que estuvo en el sol. Además, tardó un día entero más en empezar a salir la
+                        raíz.</p>
+                    <div class="case-images">
+                        <div class="image-box">
+                            <span class="image-tag tag-start">Día 1</span>
+                            <div class="mini-photo" style="padding: 0; background: transparent;">
+                                <img src="sombra_dia1.jpg" alt="Semilla seca"
+                                    style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                            </div>
+                        </div>
+                        <div class="image-box">
+                            <span class="image-tag tag-end">Día 7</span>
+                            <div class="mini-photo" style="padding: 0; background: transparent;">
+                                <img src="sombra_dia7.jpg" alt="Brote pálido"
+                                    style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Caso Interior -->
+                <div class="case interior">
+                    <h3>🏠 Interior</h3>
+                    <p>La planta se estiró muchísimo y muy rápido porque estaba buscando desesperada un poco de luz.
+                        Los brotes salieron de un color casi blanco o muy amarillitos, se ven muy débiles y se pueden
+                        romper fácil. Además, casi no creció su raíz.</p>
+                    <div class="case-images">
+                        <div class="image-box">
+                            <span class="image-tag tag-start">Día 1</span>
+                            <div class="mini-photo" style="padding: 0; background: transparent;">
+                                <img src="interior_dia1.jpg" alt="Semilla seca"
+                                    style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                            </div>
+                        </div>
+                        <div class="image-box">
+                            <span class="image-tag tag-end">Día 7</span>
+                            <div class="mini-photo" style="padding: 0; background: transparent;">
+                                <img src="interior_dia7.jpg" alt="Raíz mínima"
+                                    style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>📊 Conclusiones</h2>
+            <p>
+                Después de este experimento, me di cuenta de que aunque el frijol necesita agua para despertar,
+                <strong>la luz del sol es lo más importante</strong> para que crezca fuerte y de un color verde sano.
+                El frijol que estuvo en el sol se vio mucho más grande, fuerte y vivo que el que dejamos a oscuras.
+            </p>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>© 2024 Proyecto Escolar de Biología - Análisis de Germinación</p>
+        <p>Trabajo hecho por Iker Adrian Marquez Ramos</p>
+    </footer>
+
+    <!-- Botón para descargar o imprimir a PDF -->
+    <button class="btn-print" onclick="window.print()" title="Imprimir o guardar como documento PDF">
+        📄 Descargar como PDF
+    </button>
+</body>
+
+</html>
